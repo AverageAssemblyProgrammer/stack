@@ -21,11 +21,14 @@ private:
   std::deque<int> deque2;
   std::deque<int> deque3;
 public:
+<<<<<<< HEAD
   const char* stoc(std::string str) {
     const char* c = &*str.begin();
     return c;
   }  
 public:
+=======
+>>>>>>> 29f94a9c7286bebb0ad268d9b1de981911c2c7b6
   // public deques and stacks are handled by the user, only the user deques and stacks will be handled by the this file
   // public stacks:- 
   std::stack<int> pstack1;
