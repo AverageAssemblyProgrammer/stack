@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "stack.h"
 #include <stack>
 #include <cstring>
 #include <filesystem>
