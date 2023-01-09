@@ -4,10 +4,14 @@ Warning!! stack is not complete yet
 
 Stack is a stack-based programming language emulator
 
+## Installation
+```terminal
+$ make
+```
+
 ## Quick Start
 ```terminal
-- ./stack sim 
-- ./stack read examples/add.stack
+- ./stack sim
 ```
 
 ```terminal
