@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "stack.h"
 #include <stack>
 #include <cstring>
 #include <filesystem>
@@ -85,6 +86,34 @@ void interpret_program(std::stack<int> stack, std::string ip){
       }
     }
 
+    else if (ip == "*"){
+      if (stack.size() >= 2){
+	int a = stack.top();
+	stack.pop();
+	int b = stack.top();
+	stack.pop();
+	int c = b * a;
+	stack.push(c);
+      }
+      else {
+        std::cout << "`*` operation needs at least 2 elements on the stack" << "\n";
+      }
+    }
+
+    else if (ip == "mod"){
+      if (stack.size() >= 2){
+	int a = stack.top();
+	stack.pop();
+	int b = stack.top();
+	stack.pop();
+	int c = b % a;
+	stack.push(c);
+      }
+      else {
+	std::cout << "`mod` operation needs at least 2 elements on the stack" << "\n"; 
+      }
+    }
+    
     else if (ip == "drop"){
       if (stack.size() >= 1){
         stack.pop();
@@ -126,21 +155,21 @@ void interpret_program(std::stack<int> stack, std::string ip){
 	}
       }
       else {
-        std::cout << "the `drop all` intrinsic needs at least 1 element on the stack" << "\n";
+        std::cout << "the `drop-all` intrinsic needs at least 1 element on the stack" << "\n";
       }      
     }
       
     // TODO: implement over intrinsic
     else if (ip == "over"){
       if (stack.size() >= 2){
-	printf("Not implemented yet: `over`");
-	exit(1);
+	printf("not implemented yet");
+	exit(0);
       }
       else{
 	std::cout << "the `over` intrinsic needs at least 2 elements on the stack" << "\n";
       }
     }
-
+    
     else if (ip == "rot"){
       if (stack.size() >= 3) {
 	int a = stack.top();
@@ -184,7 +213,6 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
       stack.push(stoi(ip));
     }
 
-    // printing the first element of the stack 
     else if (ip == "print"){
       if (stack.size() == 0){
 	std::cout << "warning: stack is empty" << std::endl;
@@ -232,6 +260,34 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
       }
     }
 
+    else if (ip == "*"){
+      if (stack.size() >= 2){
+	int a = stack.top();
+	stack.pop();
+	int b = stack.top();
+	stack.pop();
+	int c = b * a;
+	stack.push(c);
+      }
+      else {
+        std::cout << "`*` operation needs at least 2 elements on the stack" << "\n";
+      }
+    }
+
+    else if (ip == "mod"){
+      if (stack.size() >= 2){
+	int a = stack.top();
+	stack.pop();
+	int b = stack.top();
+	stack.pop();
+	int c = b % a;
+	stack.push(c);
+      }
+      else {
+	std::cout << "`mod` operation needs at least 2 elements on the stack" << "\n"; 
+      }
+    }
+    
     else if (ip == "swap"){
       if (stack.size() >= 2){
 	int a = stack.top();
@@ -257,6 +313,7 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
         std::cout << "the `dup` intrinsic needs at least 1 element on the stack" << "\n";
       }
     }
+
     else if (ip == "drop-all"){
       if (stack.size() >= 1){
 	while (stack.empty()==0){
@@ -264,7 +321,7 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
 	}
       }
       else {
-        std::cout << "the `drop all` intrinsic needs at least 1 element on the stack" << "\n";
+        std::cout << "the `drop-all` intrinsic needs at least 1 element on the stack" << "\n";
       }      
     }
       
@@ -295,7 +352,7 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
 	std::cout << "the `rot` intrinsic needs at least 3 elements on the stack" << "\n";
       }
     }
-
+    
     else if (ip == "???") {
       if (stack.empty()){
 	std::cout << "There is nothing on the stack currently" << "\n";
@@ -318,7 +375,7 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
 int main(int argc, char* argv[]){
   std::string ip;
   std::stack<int> stack;
-
+  
   if (argc < 2){
     usage(1);
   }

@@ -28,10 +28,11 @@ The code above pushes 50 and 20 onto the data stack and sums them up with `+` op
 | `rot`   | `a b c -- b c a` | rotate the top three stack elements.                                                         |
 #### Arithmetic
 
-| Name     | Signature                                        | Description                                                                                                              |
-| ---      | ---                                              | ---                                                                                                                      |
-| `+`      | `[a: int] [b: int] -- [a + b: int]`              | sums up two elements on the top of the stack.                                                                            |
-| `-`      | `[a: int] [b: int] -- [a - b: int]`              | subtracts two elements on the top of the stack    
+| Name | Signature                           | Description                                      |
+|------|-------------------------------------|--------------------------------------------------|
+| `+`  | `[a: int] [b: int] -- [a + b: int]` | sums up two elements on the top of the stack.    |
+| `-`  | `[a: int] [b: int] -- [a - b: int]` | subtracts two elements on the top of the stack.  |
+| `*`  | `[a:int]  [b:int]] -- [a * b: int]` | multiplies two elements on the top of the stack. |
 
 # TBD: 
 Document Arithmetic operations 
