@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include "stack.h"
 #include <cstring>
 #include <filesystem>
 #include <fstream>
@@ -237,7 +238,7 @@ void compile_program(std::vector<std::string> program, std::string fd) {
   system(stack.stoc(ld_command_str));
 }
 
-// TODO: implement a stack.h version of interpret_read_program();
+// TODO: integrate implement_read_program with stack.h
 void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips){
   for (std::string ip : ips) {
     if (is_digits(ip) == 1){
@@ -387,7 +388,6 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
     
     else if (ip == "over"){
       if (stack.size() >= 2){
-<<<<<<< HEAD
 	int a = stack.top();
 	stack.pop();
 	int b = stack.top();
@@ -395,10 +395,8 @@ void interpret_read_program(std::stack<int> stack, std::vector<std::string> ips)
 	stack.push(b);
 	stack.push(a);
 	stack.push(b);
-=======
 	printf("not implemented yet");
 	exit(0);
->>>>>>> 29f94a9c7286bebb0ad268d9b1de981911c2c7b6
       }
       else{
 	std::cout << "the `over` intrinsic needs at least 2 elements on the stack" << "\n";
@@ -449,10 +447,7 @@ void interpret_program1(){
     if (is_digits(ip) == 1){
       stack.pstack1.push(stoi(ip));
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 29f94a9c7286bebb0ad268d9b1de981911c2c7b6
+    
     else if (ip == "print"){
       if (stack.pstack1.size() == 0){
 	std::cout << "warning: stack is empty" << std::endl;
@@ -538,34 +533,6 @@ void interpret_program1(){
         std::cout << "the `drop` intrinsic needs at least 1 element on the stack" << "\n";
       }
     }
-
-    else if (ip == "*"){
-      if (stack.size() >= 2){
-	int a = stack.top();
-	stack.pop();
-	int b = stack.top();
-	stack.pop();
-	int c = b * a;
-	stack.push(c);
-      }
-      else {
-        std::cout << "`*` operation needs at least 2 elements on the stack" << "\n";
-      }
-    }
-
-    else if (ip == "mod"){
-      if (stack.size() >= 2){
-	int a = stack.top();
-	stack.pop();
-	int b = stack.top();
-	stack.pop();
-	int c = b % a;
-	stack.push(c);
-      }
-      else {
-	std::cout << "`mod` operation needs at least 2 elements on the stack" << "\n"; 
-      }
-    }
     
     else if (ip == "swap"){
       if (stack.pstack1.size() >= 2){
@@ -636,7 +603,6 @@ void interpret_program1(){
 	std::cout << "the `rot` intrinsic needs at least 3 elements on the stack" << "\n";
       }
     }
-<<<<<<< HEAD
 
     else if (ip == "!drop"){
       if (stack.pstack2.size() >= 1) {
@@ -662,8 +628,6 @@ void interpret_program1(){
     }    
 
     // TODO: implemenent multiple stack operators
-=======
->>>>>>> 29f94a9c7286bebb0ad268d9b1de981911c2c7b6
     
     else if (ip == "???") {
       if (stack.pstack1.empty()){
@@ -685,11 +649,6 @@ void interpret_program1(){
 
 int main(int argc, char* argv[]){
   std::stack<int> stack;
-<<<<<<< HEAD
-   
-=======
-  
->>>>>>> 29f94a9c7286bebb0ad268d9b1de981911c2c7b6
   if (argc < 2){
     usage(1);
   }
