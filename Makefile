@@ -5,3 +5,7 @@ stack: stack.cpp
 
 stack.cpp:
 	
+
+.PHONY : clean
+clean:
+	rm stack 
